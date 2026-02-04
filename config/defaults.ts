@@ -5,15 +5,15 @@
 
 export const defaults = {
   // Server
-  STRIPE_SECRET_KEY: 'sk_test_51Suyii4Ch1Ou4n63pYeg8M5Ii5EwW58g1wR2qhA14SzBYoSul7fORdn6o4O1Jp1kSA0XkODZpu9hURvYvOCUPYgZ00K8hdHsGn',
   HOST: '0.0.0.0',
   PORT: 1337,
-  APP_KEYS: 'Td8DJ0Y02S1UhnwcFTRYCQ==,hAEgEQkTWKSILf7Lz0IKNQ==,mtq3T3itDZ5WcXmzwj1QoQ==,8ASRPGmGbQ379lr84QkSBg==',
-  API_TOKEN_SALT: 'Rbq6o0GiuekQTG+cMhOPUg==',
-  ADMIN_JWT_SECRET: 'P1K1vpd7U+/uuFQozYPgPA==',
-  TRANSFER_TOKEN_SALT: 'gMAnTOZeLulgfLfVaO0eZQ==',
-  ENCRYPTION_KEY: 'JnLMpzrdOBNhmWqgvsWDqQ==',
-  JWT_SECRET: 'R0lU7yMw8D40zQUWcQcjGg==',
+  APP_KEYS: 'key1,key2',
+
+  // Secrets (test-only placeholders; use .env or env vars for real values)
+  API_TOKEN_SALT: 'test-api-token-salt',
+  ADMIN_JWT_SECRET: 'test-admin-jwt-secret',
+  TRANSFER_TOKEN_SALT: 'test-transfer-token-salt',
+  ENCRYPTION_KEY: 'test-encryption-key',
 
   // Database (SQLite for local/test)
   DATABASE_CLIENT: 'sqlite',
@@ -24,4 +24,7 @@ export const defaults = {
   DATABASE_USERNAME: 'strapi',
   DATABASE_PASSWORD: '',
   DATABASE_SSL: false,
+
+  // Stripe – set in .env (STRIPE_SECRET_KEY) or here locally for testing; never commit real key
+  STRIPE_SECRET_KEY: '',
 } as const;
