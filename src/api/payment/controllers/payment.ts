@@ -1,8 +1,9 @@
 /**
  * Payment controller – create Stripe Checkout Session.
- * Set STRIPE_SECRET_KEY in backend .env.
+ * Uses STRIPE_SECRET_KEY from env or config/defaults.ts (for testing).
  */
 import { factories } from '@strapi/strapi';
+import { defaults } from '../../../../config/defaults';
 
 export default factories.createCoreController('api::payment.payment', ({ strapi }) => ({
   async createCheckoutSession(ctx) {
@@ -17,9 +18,9 @@ export default factories.createCoreController('api::payment.payment', ({ strapi 
       return ctx.badRequest('Missing amount, successUrl, or cancelUrl');
     }
 
-    const stripeSecret = process.env.STRIPE_SECRET_KEY;
+    const stripeSecret = process.env.STRIPE_SECRET_KEY || defaults.STRIPE_SECRET_KEY;
     if (!stripeSecret) {
-      return ctx.badRequest('STRIPE_SECRET_KEY is not set on the server');
+      return ctx.badRequest('STRIPE_SECRET_KEY is not set; set in env or config/defaults.ts for testing');
     }
 
     const stripe = require('stripe')(stripeSecret);

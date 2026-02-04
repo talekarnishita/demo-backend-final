@@ -1,17 +1,18 @@
 import path from 'path';
+import { defaults } from './defaults';
 
 export default ({ env }) => {
-  const client = env('DATABASE_CLIENT', 'sqlite');
+  const client = env('DATABASE_CLIENT', defaults.DATABASE_CLIENT);
 
   const connections = {
     mysql: {
       connection: {
-        host: env('DATABASE_HOST', 'localhost'),
+        host: env('DATABASE_HOST', defaults.DATABASE_HOST || 'localhost'),
         port: env.int('DATABASE_PORT', 3306),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'strapi'),
-        ssl: env.bool('DATABASE_SSL', false) && {
+        database: env('DATABASE_NAME', defaults.DATABASE_NAME),
+        user: env('DATABASE_USERNAME', defaults.DATABASE_USERNAME),
+        password: env('DATABASE_PASSWORD', defaults.DATABASE_PASSWORD),
+        ssl: env.bool('DATABASE_SSL', defaults.DATABASE_SSL) && {
           key: env('DATABASE_SSL_KEY', undefined),
           cert: env('DATABASE_SSL_CERT', undefined),
           ca: env('DATABASE_SSL_CA', undefined),
@@ -25,12 +26,12 @@ export default ({ env }) => {
     postgres: {
       connection: {
         connectionString: env('DATABASE_URL'),
-        host: env('DATABASE_HOST', 'localhost'),
-        port: env.int('DATABASE_PORT', 5432),
-        database: env('DATABASE_NAME', 'strapi'),
-        user: env('DATABASE_USERNAME', 'strapi'),
-        password: env('DATABASE_PASSWORD', 'strapi'),
-        ssl: env.bool('DATABASE_SSL', false) && {
+        host: env('DATABASE_HOST', defaults.DATABASE_HOST || 'localhost'),
+        port: env.int('DATABASE_PORT', defaults.DATABASE_PORT),
+        database: env('DATABASE_NAME', defaults.DATABASE_NAME),
+        user: env('DATABASE_USERNAME', defaults.DATABASE_USERNAME),
+        password: env('DATABASE_PASSWORD', defaults.DATABASE_PASSWORD),
+        ssl: env.bool('DATABASE_SSL', defaults.DATABASE_SSL) && {
           key: env('DATABASE_SSL_KEY', undefined),
           cert: env('DATABASE_SSL_CERT', undefined),
           ca: env('DATABASE_SSL_CA', undefined),
@@ -44,7 +45,7 @@ export default ({ env }) => {
     },
     sqlite: {
       connection: {
-        filename: path.join(__dirname, '..', '..', env('DATABASE_FILENAME', '.tmp/data.db')),
+        filename: path.join(__dirname, '..', '..', env('DATABASE_FILENAME', defaults.DATABASE_FILENAME)),
       },
       useNullAsDefault: true,
     },
