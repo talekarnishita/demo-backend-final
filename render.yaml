@@ -1,5 +1,6 @@
 # Render Blueprint – Strapi backend (backend-only repo: no rootDir; use this at repo root)
-# After deploy: Render Dashboard → strapi → Environment → add real values for APP_KEYS, API_TOKEN_SALT, ADMIN_JWT_SECRET, TRANSFER_TOKEN_SALT, JWT_SECRET, ENCRYPTION_KEY, STRIPE_SECRET_KEY (from .env).
+# After deploy: Render Dashboard → strapi → Environment → add real values (from .env):
+# APP_KEYS, API_TOKEN_SALT, ADMIN_JWT_SECRET, TRANSFER_TOKEN_SALT, JWT_SECRET (required for users-permissions), ENCRYPTION_KEY, STRIPE_SECRET_KEY.
 
 services:
   - type: web
@@ -21,19 +22,19 @@ services:
         fromDatabase:
           name: strapi-db
           property: connectionString
-      - key: Td8DJ0Y02S1UhnwcFTRYCQ==,hAEgEQkTWKSILf7Lz0IKNQ==,mtq3T3itDZ5WcXmzwj1QoQ==,8ASRPGmGbQ379lr84QkSBg==
+      - key: APP_KEYS
         sync: false
-      - key: Rbq6o0GiuekQTG+cMhOPUg==
+      - key: API_TOKEN_SALT
         sync: false
-      - key: P1K1vpd7U+/uuFQozYPgPA==
+      - key: ADMIN_JWT_SECRET
         sync: false
-      - key: gMAnTOZeLulgfLfVaO0eZQ==
+      - key: TRANSFER_TOKEN_SALT
         sync: false
-      - key: R0lU7yMw8D40zQUWcQcjGg==
+      - key: JWT_SECRET
         sync: false
-      - key: JnLMpzrdOBNhmWqgvsWDqQ==
+      - key: ENCRYPTION_KEY
         sync: false
-      - key: sk_test_51Suyii4Ch1Ou4n63pYeg8M5Ii5EwW58g1wR2qhA14SzBYoSul7fORdn6o4O1Jp1kSA0XkODZpu9hURvYvOCUPYgZ00K8hdHsGn
+      - key: STRIPE_SECRET_KEY
         sync: false
 
 databases:

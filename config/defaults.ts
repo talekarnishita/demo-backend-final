@@ -14,6 +14,7 @@ export const defaults = {
   ADMIN_JWT_SECRET: 'test-admin-jwt-secret',
   TRANSFER_TOKEN_SALT: 'test-transfer-token-salt',
   ENCRYPTION_KEY: 'test-encryption-key',
+  JWT_SECRET: 'test-jwt-secret', // users-permissions plugin; set JWT_SECRET in .env and on Render
 
   // Database (SQLite for local/test)
   DATABASE_CLIENT: 'sqlite',
