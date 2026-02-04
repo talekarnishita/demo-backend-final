@@ -14,26 +14,26 @@ services:
       - key: HOST
         value: 0.0.0.0
       - key: PORT
-        value: 10000
+        value: 1337
       - key: DATABASE_CLIENT
         value: postgres
       - key: DATABASE_URL
         fromDatabase:
           name: strapi-db
           property: connectionString
-      - key: APP_KEYS
+      - key: Td8DJ0Y02S1UhnwcFTRYCQ==,hAEgEQkTWKSILf7Lz0IKNQ==,mtq3T3itDZ5WcXmzwj1QoQ==,8ASRPGmGbQ379lr84QkSBg==
         sync: false
-      - key: API_TOKEN_SALT
+      - key: Rbq6o0GiuekQTG+cMhOPUg==
         sync: false
-      - key: ADMIN_JWT_SECRET
+      - key: P1K1vpd7U+/uuFQozYPgPA==
         sync: false
-      - key: TRANSFER_TOKEN_SALT
+      - key: gMAnTOZeLulgfLfVaO0eZQ==
         sync: false
-      - key: JWT_SECRET
+      - key: R0lU7yMw8D40zQUWcQcjGg==
         sync: false
-      - key: ENCRYPTION_KEY
+      - key: JnLMpzrdOBNhmWqgvsWDqQ==
         sync: false
-      - key: STRIPE_SECRET_KEY
+      - key: sk_test_51Suyii4Ch1Ou4n63pYeg8M5Ii5EwW58g1wR2qhA14SzBYoSul7fORdn6o4O1Jp1kSA0XkODZpu9hURvYvOCUPYgZ00K8hdHsGn
         sync: false
 
 databases:
