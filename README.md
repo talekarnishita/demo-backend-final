@@ -5,7 +5,7 @@
 
 **Status**: 🟢 **Live & Production Ready**
 - **Backend API**: [https://demo-backend-final.onrender.com](https://demo-backend-final.onrender.com)
-
+- **Source Code to Frontend Repo**: [https://github.com/talekarnishita/demo-backend-final](https://github.com/talekarnishita/demo-storeFinal)
 ---
 
 ## 📚 Documentation Modules
@@ -23,6 +23,42 @@ Navigate the backend universe with these focused guides:
 | **[🚀 Deployment (Render)](backend/08-deployment-render.md)** | Go Live. Steps to deploy on Render using `render.yaml` and environment vars. |
 | **[🕷️ Scraper Integration](backend/07-scrapy-integration.md)** | Automate content. Feeding the beast with Python Scrapy. |
 | **[🆘 Troubleshooting](backend/09-troubleshooting.md)** | Got a problem? Find the solution here (Keys, Database, Permissions). |
+
+---
+
+## 📂 Backend Structure
+
+Map of the Strapi universe:
+
+```
+backend/
+├── config/             # ⚙️ Configuration
+│   ├── admin.ts        # Admin panel settings
+│   ├── api.ts          # API settings
+│   ├── database.ts     # Database connection (SQLite/Postgres)
+│   ├── plugins.ts      # Plugin config (Cloud, Users-Permissions)
+│   └── server.ts       # Server host/port
+│
+├── src/                # 🧠 Core Logic
+│   ├── admin/          # Admin customization
+│   ├── api/            # 🔌 Content Types & Routes
+│   │   ├── payment/    # [Custom] Payment Logic
+│   │   │   ├── content-types/
+│   │   │   ├── controllers/ # Stripe session creation
+│   │   │   ├── routes/      # Custom route definition
+│   │   │   └── services/
+│   │   └── product/    # [Collection] Product Logic
+│   │       ├── content-types/
+│   │       ├── controllers/
+│   │       ├── routes/
+│   │       └── services/
+│   ├── extensions/     # Plugin extensions
+│   └── index.ts        # Bootstrap/Register functions
+│
+├── .env                # 🔐 Secrets (GIT IGNORED)
+├── public/             # 🖼️ Static assets
+└── render.yaml         # 🚀 Render Deployment Blueprint
+```
 
 ---
 
