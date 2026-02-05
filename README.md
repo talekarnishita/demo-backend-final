@@ -1,61 +1,69 @@
-# 🚀 Getting started with Strapi
+# 🦅 Backend Master Guide
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
+> **Your central command center for the Strapi Headless CMS.**
+> Everything you need to know about the API, Database, and Payment Logic.
 
-### `develop`
-
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-develop)
-
-```
-npm run develop
-# or
-yarn develop
-```
-
-### `start`
-
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-start)
-
-```
-npm run start
-# or
-yarn start
-```
-
-### `build`
-
-Build your admin panel. [Learn more](https://docs.strapi.io/dev-docs/cli#strapi-build)
-
-```
-npm run build
-# or
-yarn build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project including [Strapi Cloud](https://cloud.strapi.io). Browse the [deployment section of the documentation](https://docs.strapi.io/dev-docs/deployment) to find the best solution for your use case.
-
-```
-yarn strapi deploy
-```
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://strapi.io/blog) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
+**Status**: 🟢 **Live & Production Ready**
+- **Backend API**: [https://demo-backend-final.onrender.com](https://demo-backend-final.onrender.com)
 
 ---
 
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
+## 📚 Documentation Modules
+
+Navigate the backend universe with these focused guides:
+
+| Module | What's Inside |
+|--------|---------------|
+| **[🏗️ Architecture & Stack](backend/01-architecture-tech-stack.md)** | The blueprint. How Strapi, Node.js, and Postgres power the engine. |
+| **[📂 Project Structure](backend/04-project-structure.md)** | A map of the codebase. Know exactly where `routes`, `controllers`, and `config` live. |
+| **[🔌 API Routes](backend/05-api-routes.md)** | The API Contract. Detailed endpoints for Products (`GET`, `POST`) and Payments. |
+| **[💳 Payment Gateway](backend/02-payment-gateway.md)** | **Critical**. How we talk to Stripe, handle secrets, and process checkouts. |
+| **[🗄️ Data Schema](backend/03-data-modelling-schema.md)** | The Data Model. Deep dive into `Product` and `Payment` content types. |
+| **[🔐 Permissions & Security](backend/06-permissions-security.md)** | **Must Read**. How to fix `403 Forbidden` errors by configuring Public roles. |
+| **[🚀 Deployment (Render)](backend/08-deployment-render.md)** | Go Live. Steps to deploy on Render using `render.yaml` and environment vars. |
+| **[🕷️ Scraper Integration](backend/07-scrapy-integration.md)** | Automate content. Feeding the beast with Python Scrapy. |
+| **[🆘 Troubleshooting](backend/09-troubleshooting.md)** | Got a problem? Find the solution here (Keys, Database, Permissions). |
+
+---
+
+## ⚡ Quick Start (Local Dev)
+
+Get your backend running in 60 seconds:
+
+1.  **Enter the arena**:
+    ```bash
+    cd backend
+    ```
+2.  **Equip dependencies**:
+    ```bash
+    npm install
+    ```
+3.  **Configure secrets**:
+    ```bash
+    cp .env.example .env
+    # ⚠️ EDIT .env: Add your STRIPE_SECRET_KEY (No spaces!)
+    ```
+4.  **Ignite the server**:
+    ```bash
+    npm run develop
+    ```
+
+---
+
+## 🧩 Key Systems
+
+### 1. The Engine (Strapi v5)
+We use Strapi 5 for its robust Headless CMS capabilities. It provides the **Admin Panel** for content managers and the **REST API** for our React frontend.
+
+### 2. The Bank (Stripe)
+Payments are handled securely via a custom controller. The frontend never touches the secret key.
+- **Route**: `POST /api/payments/create-checkout-session`
+- **Logic**: Creates a Stripe Session -> Returns URL -> Frontend Redirects.
+
+### 3. The Vault (Database)
+- **Local**: fast `sqlite` (`.tmp/data.db`)
+- **Production**: robust `postgres` (Managed by Render)
+
+---
+
+*Documentation is a living entity. Keep it updated.*
